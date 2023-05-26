@@ -9,4 +9,42 @@ editor: visual
 
 We are observing whether the population of a community is adding to the burden of the LSLRP by innately having more services lines in smaller communities than larger communities (10,000 plus)
 
-## Loading in data
+## Setting
+
+```{r, warning=FALSE,message=FALSE}
+library(tidyverse)   
+library(ggformula)
+library(mosaic)
+library(tidyr)
+library(glmmTMB)
+library(plotly)
+library(rworldmap)
+```
+
+## loading in the data
+
+```{r}
+data <- read.csv("~/Mcgregor Project/Data material/CSV-extracts from sql/population_to_service_lines.csv")
+```
+
+## explanatory graphs
+
+```{r}
+data_arranged <- data|> arrange(desc(data$Population))
+
+ggplot(data_arranged, aes(x = reorder(Total_service_lines, -Population), y = Population)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "City", y = "Population", title = "City Population") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r}
+
+fig <- plot_ly(data = data_arranged, x = ~Total_service_lines, y = ~Population, type = "scatter", mode = 'markers', color = data_arranged$City, marker = list(opacity = 0.9))
+fig <- fig|>layout(title = 'Population to lead city ratio in Michigan',
+          xaxis = list(showgrid = FALSE),
+         yaxis = list(showgrid = FALSE), showlegend = FALSE)
+
+
+fig
+```
