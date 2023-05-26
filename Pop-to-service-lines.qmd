@@ -1,0 +1,12 @@
+---
+title: "Population-to-services_lines"
+author: "Adham Rishmawi"
+format: html
+editor: visual
+---
+
+## Issue at hand
+
+We are observing whether the population of a community is adding to the burden of the LSLRP by innately having more services lines in smaller communities than larger communities (10,000 plus)
+
+## Loading in data
