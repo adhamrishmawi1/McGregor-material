@@ -48,3 +48,14 @@ fig <- fig|>layout(title = 'Population to lead city ratio in Michigan',
 
 fig
 ```
+
+## Converting the service lines to a ratio for population
+
+```{r}
+data$ratio_serv_pop <- data$Total_service_lines / data$Population
+```
+
+```{r}
+fig1 <- plot_ly(data, x = ~ratio_serv_pop, y = ~ratio_serv_pop, text = ~data$City, type = 'scatter', mode = 'markers', color = data$City)
+fig1
+```
