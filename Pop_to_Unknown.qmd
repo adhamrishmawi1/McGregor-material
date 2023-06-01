@@ -5,23 +5,88 @@ format: html
 editor: visual
 ---
 
-## Quarto
+## Setting
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
+```{r, warning=FALSE,message=FALSE}
+library(tidyverse)   
+library(ggformula)
+library(mosaic)
+library(tidyr)
+library(kableExtra)
+library(knitr)
+library(glmmTMB)
+library(plotly)
+library(forcats)
+library(rworldmap)
 ```
 
-You can add options to executable code like this
+## loading in the data
 
 ```{r}
-#| echo: false
-2 * 2
+data <- read.csv("~/Mcgregor Project/Data material/CSV-extracts from sql/Population_to_unknown_lines.csv")
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## Pearson Test
+
+```{r}
+poptable <- data$population
+servtable <- data$Total_service
+unktable <- data$Total_unknown
+
+result <-  cor.test(poptable,unktable)
+print(result)
+```
+
+1.  **data**: The test was performed on variables "x" and "y".
+
+2.  **t-value**: The t-value is 14.27, which represents the strength and direction of the correlation. A higher absolute t-value indicates a stronger correlation. In this case, the positive t-value suggests a positive correlation between the variables.
+
+3.  **df**: The degrees of freedom (df) is 285, indicating the amount of information available for the test.
+
+4.  **p-value**: The p-value is less than 2.2e-16, which indicates a highly significant result. The small p-value provides strong evidence against the null hypothesis and suggests that the correlation is statistically significant.
+
+5.  **alternative hypothesis**: The alternative hypothesis states that the true correlation is not equal to 0, implying that there is a significant correlation between variables "x" and "y".
+
+6.  **confidence interval**: The 95 percent confidence interval is reported as 0.5725582 to 0.7083803. It provides a range of values within which we can be 95% confident that the true correlation lies.
+
+7.  **sample estimate**: The sample estimate (cor) is 0.6455451, which represents the estimated correlation coefficient. It indicates a moderate positive correlation between "x" and "y".
+
+In summary, the results indicate a highly significant and moderate positive correlation (0.6455) between variables "x" and "y". The t-value and p-value suggest that this correlation is statistically significant at a 95% confidence level. The confidence interval (0.5726 to 0.7084) provides a range within which we can be 95% confident that the true correlation lies.
+
+```{r}
+
+# Load the required packages
+library(knitr)
+library(kableExtra)
+
+# Create a table from the result
+result_table <- data.frame(
+  Test = "Pearson's correlation",
+  t_value = result$statistic,
+  df = result$parameter,
+  p_value = format(result$p.value, scientific = TRUE),
+  alternative_hypothesis = result$alternative,
+  confidence_interval = paste0("[", result$conf.int[1], ", ", result$conf.int[2], "]"),
+  sample_estimates = result$estimate
+)
+
+
+# Format the table
+formatted_table <- kable(result_table[, -1], align = "c", format = "html", escape = FALSE) %>%
+  kable_styling(full_width = FALSE) %>%
+  add_header_above(c(" " = 1, "Correlation Test Result" = 6))  # Adjust the header row to have 6 columns
+
+# Print the formatted table
+formatted_table
+
+
+```
+
+```{r}
+ggplot(data, aes(x = poptable, y = unktable)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Population", y = "Unknown service lines") +
+  ggtitle("Scatter Plot of Pop vs Unknown")+
+  xlim(0, 150000)
+```
