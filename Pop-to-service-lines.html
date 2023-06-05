@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adham Rishmawi">
+
+<title>Population-to-services_lines</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Pop-to-service-lines_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Pop-to-service-lines_files/libs/quarto-html/quarto.js"></script>
+<script src="Pop-to-service-lines_files/libs/quarto-html/popper.min.js"></script>
+<script src="Pop-to-service-lines_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Pop-to-service-lines_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Pop-to-service-lines_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Pop-to-service-lines_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Pop-to-service-lines_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Pop-to-service-lines_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Pop-to-service-lines_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Pop-to-service-lines_files/libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="Pop-to-service-lines_files/libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="Pop-to-service-lines_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="Pop-to-service-lines_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="Pop-to-service-lines_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="Pop-to-service-lines_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="Pop-to-service-lines_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="Pop-to-service-lines_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Population-to-services_lines</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adham Rishmawi </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="issue-at-hand" class="level2">
+<h2 class="anchored" data-anchor-id="issue-at-hand">Issue at hand</h2>
+<p>We are observing whether the population of a community is adding to the burden of the LSLRP by innately having more services lines in smaller communities than larger communities (10,000 plus)</p>
+</section>
+<section id="setting" class="level2">
+<h2 class="anchored" data-anchor-id="setting">Setting</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmmTMB)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rworldmap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="loading-in-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-in-the-data">loading in the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"~/Mcgregor Project/Data material/CSV-extracts from sql/population_to_service_lines.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="explanatory-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="explanatory-graphs">explanatory graphs</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_arranged <span class="ot">&lt;-</span> data<span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(data<span class="sc">$</span>Population))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_arranged, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Total_service_lines, <span class="sc">-</span>Population), <span class="at">y =</span> Population)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"City"</span>, <span class="at">y =</span> <span class="st">"Population"</span>, <span class="at">title =</span> <span class="st">"City Population"</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Pop-to-service-lines_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> data_arranged, <span class="at">x =</span> <span class="sc">~</span>Total_service_lines, <span class="at">y =</span> <span class="sc">~</span>Population, <span class="at">type =</span> <span class="st">"scatter"</span>, <span class="at">mode =</span> <span class="st">'markers'</span>, <span class="at">text =</span> data_arranged<span class="sc">$</span>City, <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">opacity =</span> <span class="fl">0.9</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> fig<span class="sc">|&gt;</span><span class="fu">layout</span>(<span class="at">title =</span> <span class="st">'Population to lead city ratio in Michigan'</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">showgrid =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">showgrid =</span> <span class="cn">FALSE</span>), <span class="at">showlegend =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c31b5440ef56fb9fc5e3" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c31b5440ef56fb9fc5e3">{"x":{"visdat":{"35f0e7e194f":["function () ","plotlyVisDat"]},"cur_data":"35f0e7e194f","attrs":{"35f0e7e194f":{"x":{},"y":{},"mode":"markers","text":["Detroit Water and Sewerage","Grand Rapids City of","Warren City of","Ann Arbor City of","Kalamazoo City of","Dearborn City of","Clinton Charter Twp. of","Livonia City of","Macomb Twp","Shelby Twp.","Rochester Hills City of","Waterford Twp.","Pontiac City of","Taylor City of","St. Clair Shores City of","Royal Oak City of","Saginaw City of","Battle Creek City of","Monroe City of","Roseville City of","Redford Charter Twp of","West Bloomfield Twp.","Midland City of","Plainfield Charter Twp.","Muskegon City of","Lincoln Park City of","St. Joseph City of: Application 2","East Lansing City of","Brownstown Charter Twp. of","Port Huron City of","Oak Park City of","Southgate City of","Van Buren Twp.","Garden City","Allen Park City of","harrison Charter Twp. of","Mt. Pleasant City of","Wyandotte Water Department","Romulus City of","Hamtramck City of","Summit Twp.","Ferndale City of","Auburn Hills City of","Allendale Charter Twp.","Birmingham City of","Mt. Clemens City of","Hazel Park City of","Grosse Pointe Woods City of","Huron Twp.","Traverse City City of","Berkley City of","Sault Ste. Marie City of","Fraser City of","Owosso City of","Harper Woods City of","Bangor Charter Twp. of","Wixom City of","Union Charter Twp. of","Woodhaven City of","Escanaba City of","New Baltimore City of","Clawson City of","Emmett Charter Twp.","South Lyon City of","Sturgis City of","Grosse Pointe Park City of","Muskegon Heights City of","Coldwater Board of Public Utilities","Highland Park City of","Big Rapids City of","Beverly Hills Village of","Grand Haven City of","Grosse Ile Twp.","Cadillac City of","Melvindale City of","Alpena City of","Flat Rock City of","Tittabawassee Twp.","Benton Harbor City of","Ludington City of","Sumpter Twp.","Ecorse City of","Hampton Charter Twp. of","Alma City of","Hastings City of","Berlin Twp.","Howell City of","Plymouth City of","Charlotte City of","Clay Twp.","Beecher Metropolitan District","St. Joseph City of","Greenville City of","Petosky City of","Bay County Department of Water and Sewer","Menominee City of","Mason City of","Hillsdale City of","Center Line City of","Zeeland Board of Public Works","Albion City of","St. Johns City of","Grand Ledge City of","Brighton City of","Ash Twp.","Houghton City of","Milan City of","Three Rivers City of","Iron Mountain City of","River Rouge City of","Hudsonville City of","Rockford City of","Rochester City of","Marshall City of","St. Louis City of","Ishpeming City of","Kinross Charter Twp.","Carrollton Twp.","Manistee City of","Northville City of","Belding City of","Richmond City of","St. Clair River Water Authority","Swartz Creek City of","Grosse Pointe City of","Eaton Rapids City of","St. Clair City of","Ironwood City of","Springfield City of","Alpena Twp.","Ira Twp.","Benton Charter Twp.","Allegan City of","Cheboygan City of","Dexter City of","Negaunee City of","Hancock City of","Gibraltar City of","Buchanan City of","Coopersville City of","Gladstone City of","St. Ignace City of","Mt. Morris City of","Lathrup Village City of","Algonac City of","Williamston City of","Wayland City of","Otsego City of","Portland City of","Marquette Charter Twp. of","Pennfield Charter Twp.","Roosevelt Park City of","Plainwell City of","North Muskegon City of","Ontonagon Village of","Romeo Village of","Boyne City City of","Munising City of","Cottrellville Twp","Middleville Village of","Gogebic Range Water Authority","Norway City of","Hartford City of","Clare City of","Manistique City of","Iron River City of","Bad Axe City of","Fowlerville Village of","Vicksburg Village of","Rogers City City of","Marquette County - KI-Sawyer","Douglas City of","Whitehall City of","Ishpeming Twp.","Chesaning Village of","Sandusky City of","Pleasant Ridge City of","Galesburg City of","Forsyth Twp.","Montague City of","L'Anse Village of","Cass City Village of","Croswell City of","Pinckney Village of","Spring Lake Village of","Bronson City of","Wakefield City of","Hudson City of","Baraga Village of","Perry City of","Watervliet City of","West Branch City of","Hart City of","Niles Charter Twp","Leoni Twp.","St. Charles Village of","Newaygo City of","Quincy Village of","Shelby Village of","Corunna City of","Auburn City of","Bessemer City of","Capac Village of","Royal Oak Twp.","Marlette City of","Lawton Village of","Fennville City of","Leslie City of","Decatur Village of","Howard City Village of","Cassopolis Village of","Berrien Springs Village of","Armada Village of","Crystal Falls Twp.","Adams Twp.","South Rockwood Village of","Homer Village of","Nashville Village of","Elk Rapids Village of","Ovid City of","Union City Village of","Grass Lake Village of","Three Oaks Village of","Montrose City of","Schoolcraft Village of","Richland Twp","Lockport Twp.","Newberry Village of","Stanton City of","Osceola Twp","Saranac Village of","Brown City City of","Bellevue Village of","Pinconning City of","Coleman City of","Portage Charter Twp. of","Baldwin Village of","Pigeon Village of","Edmore Village of","Colon Village of","Marcellus Village of","Lexington Village of","Carson City City of","Athens Village of","Harrison City of","Bellaire Village of","Roscommon Village of","Lakeview Village of","Port Austin Area Sewer and Water Authority","Central Lake Village of","Mayville Village of","Onsted Village of","Westphalia Village of","Chassell Twp.","Augusta Village of","Onaway City of","Suttons Bay Village of","Mackinaw City Village of","Pentwater Village of","Ubly Village of","Mendon Village of","Lyons Village of","Springport Village of","Vermontville Village of","Republic Twp.","Maple Rapids Village of","Bessemer Twp.","Sheridan Village of","Muir Village of","New Lothrop Village of","Sunfield Village of","Sand Lake Village of","Northport Village of","Ely Twp.","Torch Lake Twp.","Houghton County","Benzonia Village of","Pewamo Village of","Kaleva Village of","Richmond Twp.","Crystal Mountian Resort","Ford River Twp.","Rudyard Twp.","Elberta Village of","Tilden Twp.","Germfask Twp.","Interior Twp.","Grant Twp.","Minden City Village of"],"marker":{"opacity":0.9},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Population to lead city ratio in Michigan","xaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"Total_service_lines"},"yaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"Population"},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[311000,81248,51000,19960,41411,34712,28448,38526,29317,24806,23882,24704,19392,22238,25303,23741,1490,19316,15327,16218,20524,2792,16451,10822,12898,15800,3875,1166,10027,12184,10701,10530,7489,11602,11790,795,5560,10818,7998,5792,7646,10031,5637,3440,1163,6491,7570,6891,4947,7463,6903,5100,5358,6692,5671,4709,3439,1930,3866,5546,4014,4900,995,3648,4295,4225,3791,4737,2845,2588,4371,4253,4394,3839,779,4665,7935,2746,5877,4445,4898,4616,2987,3174,2306,3516,522,3319,3848,4716,3524,3875,3402,3351,2996,4148,2918,2804,2452,2379,4500,2855,2939,4564,2315,1764,2495,2749,3782,3025,2167,2950,2417,3244,1412,2950,984,2423,3000,756,18830,1834,737,2122,2100,3200,2353,3034,1766,2921,1398,2572,1723,1996,1514,1795,1923,1600,1632,1391,2163,1262,1072,1782,2035,1505,1182,1626,1464,1170,977,1412,1375,1771,2610,1672,1808,1100,746,795,75,1692,850,2889,1483,1663,1444,798,1403,1490,1215,1125,828,1017,1110,993,1152,802,823,2351,1108,1099,886,690,1271,907,991,933,712,768,817,977,882,767,688,867,654,63,7979,845,953,1038,714,770,833,510,633,441,726,553,440,780,621,640,628,569,519,678,794,656,686,575,824,667,635,560,717,812,1409,430,507,653,530,642,491,536,392,619,1283,665,576,599,515,500,34356,576,496,486,741,555,405,358,425,352,348,475,347,675,741,446,1431,323,273,329,335,264,440,304,264,265,235,171,345,210,300,64,271,210,266,225,400,192,212,24129,147,158,107,110,130],"y":[700000,329000,134056,125000,103527,101000,97513,94000,90000,78000,74000,72893,63398,63131,60922,57236,51508,51000,48582,48000,47078,45192,42000,42000,37213,36517,33000,32000,30627,30000,29654,29088,28000,27692,27216,26833,26000,25044,23989,23313,22522,22105,22000,21000,20472,18405,16347,16135,15879,15000,14970,14689,14480,14380,14236,13946,13498,12930,12484,12223,11929,11845,11770,11300,11269,11050,10856,10813,10806,10601,10451,10412,10371,10355,10312,10155,9932,9850,9670,9592,9549,9512,9452,9383,9332,9299,9232,9132,9074,9066,8876,8789,8776,8725,8664,8599,8458,8305,8257,8100,8000,7900,7854,7800,7754,7708,7683,7660,7620,7380,7349,7160,7130,7000,6976,6600,6567,6103,6100,5970,5900,5874,5850,5557,5421,5340,5300,5200,5200,5187,5178,5000,4998,4867,4715,4568,4549,4500,4400,4400,4396,4385,4280,4121,4110,4077,4003,3956,3936,3910,3908,3831,3804,3786,3750,3750,3735,3700,3559,3500,3300,3227,3188,3110,3097,3029,2980,2931,2906,2870,2835,2712,2706,2694,2683,2526,2526,2500,2479,2479,2457,2428,2422,2412,2400,2349,2318,2217,2204,2180,2160,2139,2126,2100,2064,2054,2050,2040,2040,2028,2011,1914,1890,1881,1875,1871,1865,1851,1830,1803,1800,1740,1730,1722,1720,1675,1668,1655,1620,1616,1599,1572,1556,1550,1525,1500,1500,1426,1422,1330,1327,1316,1285,1245,1243,1214,1208,1208,1200,1173,1149,1106,1100,1100,1100,1086,1075,1007,1004,952,950,947,936,900,900,880,874,870,863,858,856,824,803,775,700,680,650,649,612,581,578,553,525,507,500,500,497,475,470,470,450,385,380,353,328,250,200,200,198],"mode":"markers","text":["Detroit Water and Sewerage","Grand Rapids City of","Warren City of","Ann Arbor City of","Kalamazoo City of","Dearborn City of","Clinton Charter Twp. of","Livonia City of","Macomb Twp","Shelby Twp.","Rochester Hills City of","Waterford Twp.","Pontiac City of","Taylor City of","St. Clair Shores City of","Royal Oak City of","Saginaw City of","Battle Creek City of","Monroe City of","Roseville City of","Redford Charter Twp of","West Bloomfield Twp.","Midland City of","Plainfield Charter Twp.","Muskegon City of","Lincoln Park City of","St. Joseph City of: Application 2","East Lansing City of","Brownstown Charter Twp. of","Port Huron City of","Oak Park City of","Southgate City of","Van Buren Twp.","Garden City","Allen Park City of","harrison Charter Twp. of","Mt. Pleasant City of","Wyandotte Water Department","Romulus City of","Hamtramck City of","Summit Twp.","Ferndale City of","Auburn Hills City of","Allendale Charter Twp.","Birmingham City of","Mt. Clemens City of","Hazel Park City of","Grosse Pointe Woods City of","Huron Twp.","Traverse City City of","Berkley City of","Sault Ste. Marie City of","Fraser City of","Owosso City of","Harper Woods City of","Bangor Charter Twp. of","Wixom City of","Union Charter Twp. of","Woodhaven City of","Escanaba City of","New Baltimore City of","Clawson City of","Emmett Charter Twp.","South Lyon City of","Sturgis City of","Grosse Pointe Park City of","Muskegon Heights City of","Coldwater Board of Public Utilities","Highland Park City of","Big Rapids City of","Beverly Hills Village of","Grand Haven City of","Grosse Ile Twp.","Cadillac City of","Melvindale City of","Alpena City of","Flat Rock City of","Tittabawassee Twp.","Benton Harbor City of","Ludington City of","Sumpter Twp.","Ecorse City of","Hampton Charter Twp. of","Alma City of","Hastings City of","Berlin Twp.","Howell City of","Plymouth City of","Charlotte City of","Clay Twp.","Beecher Metropolitan District","St. Joseph City of","Greenville City of","Petosky City of","Bay County Department of Water and Sewer","Menominee City of","Mason City of","Hillsdale City of","Center Line City of","Zeeland Board of Public Works","Albion City of","St. Johns City of","Grand Ledge City of","Brighton City of","Ash Twp.","Houghton City of","Milan City of","Three Rivers City of","Iron Mountain City of","River Rouge City of","Hudsonville City of","Rockford City of","Rochester City of","Marshall City of","St. Louis City of","Ishpeming City of","Kinross Charter Twp.","Carrollton Twp.","Manistee City of","Northville City of","Belding City of","Richmond City of","St. Clair River Water Authority","Swartz Creek City of","Grosse Pointe City of","Eaton Rapids City of","St. Clair City of","Ironwood City of","Springfield City of","Alpena Twp.","Ira Twp.","Benton Charter Twp.","Allegan City of","Cheboygan City of","Dexter City of","Negaunee City of","Hancock City of","Gibraltar City of","Buchanan City of","Coopersville City of","Gladstone City of","St. Ignace City of","Mt. Morris City of","Lathrup Village City of","Algonac City of","Williamston City of","Wayland City of","Otsego City of","Portland City of","Marquette Charter Twp. of","Pennfield Charter Twp.","Roosevelt Park City of","Plainwell City of","North Muskegon City of","Ontonagon Village of","Romeo Village of","Boyne City City of","Munising City of","Cottrellville Twp","Middleville Village of","Gogebic Range Water Authority","Norway City of","Hartford City of","Clare City of","Manistique City of","Iron River City of","Bad Axe City of","Fowlerville Village of","Vicksburg Village of","Rogers City City of","Marquette County - KI-Sawyer","Douglas City of","Whitehall City of","Ishpeming Twp.","Chesaning Village of","Sandusky City of","Pleasant Ridge City of","Galesburg City of","Forsyth Twp.","Montague City of","L'Anse Village of","Cass City Village of","Croswell City of","Pinckney Village of","Spring Lake Village of","Bronson City of","Wakefield City of","Hudson City of","Baraga Village of","Perry City of","Watervliet City of","West Branch City of","Hart City of","Niles Charter Twp","Leoni Twp.","St. Charles Village of","Newaygo City of","Quincy Village of","Shelby Village of","Corunna City of","Auburn City of","Bessemer City of","Capac Village of","Royal Oak Twp.","Marlette City of","Lawton Village of","Fennville City of","Leslie City of","Decatur Village of","Howard City Village of","Cassopolis Village of","Berrien Springs Village of","Armada Village of","Crystal Falls Twp.","Adams Twp.","South Rockwood Village of","Homer Village of","Nashville Village of","Elk Rapids Village of","Ovid City of","Union City Village of","Grass Lake Village of","Three Oaks Village of","Montrose City of","Schoolcraft Village of","Richland Twp","Lockport Twp.","Newberry Village of","Stanton City of","Osceola Twp","Saranac Village of","Brown City City of","Bellevue Village of","Pinconning City of","Coleman City of","Portage Charter Twp. of","Baldwin Village of","Pigeon Village of","Edmore Village of","Colon Village of","Marcellus Village of","Lexington Village of","Carson City City of","Athens Village of","Harrison City of","Bellaire Village of","Roscommon Village of","Lakeview Village of","Port Austin Area Sewer and Water Authority","Central Lake Village of","Mayville Village of","Onsted Village of","Westphalia Village of","Chassell Twp.","Augusta Village of","Onaway City of","Suttons Bay Village of","Mackinaw City Village of","Pentwater Village of","Ubly Village of","Mendon Village of","Lyons Village of","Springport Village of","Vermontville Village of","Republic Twp.","Maple Rapids Village of","Bessemer Twp.","Sheridan Village of","Muir Village of","New Lothrop Village of","Sunfield Village of","Sand Lake Village of","Northport Village of","Ely Twp.","Torch Lake Twp.","Houghton County","Benzonia Village of","Pewamo Village of","Kaleva Village of","Richmond Twp.","Crystal Mountian Resort","Ford River Twp.","Rudyard Twp.","Elberta Village of","Tilden Twp.","Germfask Twp.","Interior Twp.","Grant Twp.","Minden City Village of"],"marker":{"color":"rgba(31,119,180,1)","opacity":0.9,"line":{"color":"rgba(31,119,180,1)"}},"type":"scatter","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="converting-the-service-lines-to-a-ratio-for-population" class="level2">
+<h2 class="anchored" data-anchor-id="converting-the-service-lines-to-a-ratio-for-population">Converting the service lines to a ratio for population</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ratio_serv_pop <span class="ot">&lt;-</span> data<span class="sc">$</span>Total_service_lines <span class="sc">/</span> data<span class="sc">$</span>Population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig1 <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(data, <span class="at">x =</span> <span class="sc">~</span>Population, <span class="at">y =</span> <span class="sc">~</span>ratio_serv_pop, <span class="at">text =</span> <span class="sc">~</span>data<span class="sc">$</span>City, <span class="at">type =</span> <span class="st">'scatter'</span>, <span class="at">mode =</span> <span class="st">'markers'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-89ba2fd959aca4ee170e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-89ba2fd959aca4ee170e">{"x":{"visdat":{"35f033bb3916":["function () ","plotlyVisDat"]},"cur_data":"35f033bb3916","attrs":{"35f033bb3916":{"x":{},"y":{},"text":{},"mode":"markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Population"},"yaxis":{"domain":[0,1],"automargin":true,"title":"ratio_serv_pop"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[9670,9452,9074,1881,8458,7380,2349,9332,8789,5200,2160,1208,470,8776,4400,8305,7660,2126,3188,1316,1740,2139,1007,2683,4280,2050,2054,3804,870,2428,1865,2040,2400,1599,1914,4568,9132,8876,7349,6976,6103,6100,5850,4110,2835,2526,2422,2217,2011,1803,10806,22105,16347,57236,29654,14236,14380,60922,37213,10856,23313,63398,700000,48000,63131,11269,27216,94000,25044,30627,1616,1327,1245,1075,1004,328,51000,3227,74000,36517,29088,13498,12484,10355,9299,8257,7800,5300,4121,2980,2870,2204,1285,30000,26833,26000,6600,2479,1890,1556,1550,1243,1100,134056,97513,23989,15879,14480,10412,7854,7754,4998,4549,3735,2712,2064,1620,1422,1214,1100,1851,10312,8000,3110,20472,2040,2706,51508,1100,3500,32000,9932,7160,2479,1200,9232,5000,45192,5900,5874,3750,856,1800,18405,8599,1572,103527,880,947,1086,8100,353,101000,1525,12223,612,2526,11770,10601,1830,329000,27692,775,125000,13946,4715,2694,1500,950,824,649,581,650,7683,16135,72893,42000,12930,11845,8725,4077,3300,2931,1722,900,858,15000,11300,5557,3936,3700,1730,680,525,497,7000,14689,2457,10451,9592,7708,3750,1720,200,4003,5970,33000,700,4400,7620,1426,4500,1875,47078,21000,9549,9066,8664,6567,5200,5178,3910,3831,3786,2412,1655,1106,1208,5421,10813,7130,9383,90000,78000,28000,22000,14970,9850,5187,2906,2500,2028,1871,7900,3097,48582,11929,42000,22522,1675,1668,1173,1149,507,9512,4867,11050,10371,5340,4396,4385,3956,3908,3559,3029,2180,2100,1500,900,578,200,863,500,385,952,450,2318,936,874,500,1330,803,553,475,470,380,250,198,10155],"y":[0.607755946225439,0.316017774016081,0.424068767908309,0.409356725146199,0.344998817687397,0.409891598915989,0.386121753937846,0.24710672953279,0.44089202412106,0.583461538461538,0.378240740740741,0.324503311258278,0.565957446808511,0.387648131267092,0.370909090909091,0.337627934978928,0.3588772845953,0.41486359360301,0.266624843161857,0.496200607902736,0.448275862068966,0.456755493221131,0.482621648460775,0.413715989563921,0.250467289719626,0.319024390243902,0.422103213242454,0.361461619348055,0.775862068965517,0.452635914332784,0.33941018766756,0.0308823529411765,0.529583333333333,0.42901813633521,0.542319749216301,0.392950963222417,0.363447218572054,0.397025687246507,0.294870050346986,0.202408256880734,0.397017860068819,0.491803278688525,0.125982905982906,0.495133819951338,0.428571428571429,0.393111638954869,0.365813377374071,0.420838971583221,0.473893585280955,0.306711037160288,0.263279659448455,0.453788735580185,0.463081911054016,0.414791390034244,0.360861941053484,0.398356279853892,0.465368567454798,0.415334361971045,0.346599306693897,0.349207811348563,0.248445073564106,0.305877157008108,0.444285714285714,0.337875,0.352251667168269,0.381134084657024,0.433201058201058,0.409851063829787,0.431959750838524,0.327390864270089,0.405940594059406,0.382064807837227,0.51566265060241,0.461395348837209,0.73804780876494,0.448170731707317,0.378745098039216,0.524325999380229,0.32272972972973,0.432675192376154,0.362004950495049,0.254778485701585,0.30967638577379,0.370738773539353,0.378105172599204,0.296960155019983,0.585128205128205,0.443962264150943,0.432419315700073,0.484563758389262,0.519163763066202,0.323049001814882,0.412451361867704,0.406133333333333,0.029627697238475,0.213846153846154,0.446969696969697,0.331988705123033,0.377777777777778,0.529562982005141,0.430322580645161,0.395012067578439,0.468181818181818,0.380438025899624,0.291735460912904,0.333402809621076,0.311543548082373,0.370027624309392,0.408470995005763,0.374204227145404,0.298555584214599,0.344737895158063,0.422730270389096,0.484069611780455,0.414823008849558,0.333333333333333,0.490123456790123,0.990857946554149,0.441515650741351,0.454545454545455,0.238249594813614,0.0755430566330489,0.5625,0.928938906752412,0.0568093005080109,3.91127450980392,0.305986696230599,0.0289275452356915,31.2327272727273,0.227142857142857,0.0364375,0.79893274265002,0.412011173184358,0.948366276724486,1.06916666666667,0.0565424610051993,0.5144,0.0617808461674633,3.19152542372881,0.312223357167177,0.696,1.67172897196262,0.244444444444444,0.35267590328715,0.482381672287475,0.365776081424936,0.400001931863185,0.539772727272727,0.378035902851109,0.530386740331492,0.293703703703704,68.3541076487252,0.343683168316832,0.416393442622951,0.453734762333306,0.431372549019608,0.456057007125891,0.0845369583687341,0.244127912461089,0.39672131147541,0.246954407294833,0.418965766286292,0.424516129032258,0.15968,0.337659543955256,0.321102863202545,0.377505567928731,0.373333333333333,0.426315789473684,0.391990291262136,0.468412942989214,0.456110154905336,0.676923076923077,0.324742938956137,0.427083978927797,0.338907714046616,0.391690476190476,0.149265274555298,0.413676656817222,0.384068767908309,0.369143978415502,0.0227272727272727,0.272262026612078,0.371660859465738,0.391111111111111,0.51981351981352,0.497533333333333,0.32283185840708,0.381860716213784,0.371951219512195,0.297297297297297,0.358959537572254,0.388235294117647,0.657142857142857,0.545271629778672,0.463428571428571,0.347198583974403,0.450956450956451,0.41823748923548,0.463407005838198,0.228853139595226,0.445866666666667,0.365116279069767,0.535,0.295278541094179,0.126633165829146,0.117424242424242,0.478571428571429,0.316136363636364,0.496325459317585,0.569424964936886,0.355555555555556,0.444266666666667,0.435957347380942,0.163809523809524,0.51293329144413,0.520185307743216,0.345798707294552,0.149840109639105,0.339615384615385,0.269988412514484,0.29923273657289,0.368572174367006,0.467776016904385,0.286069651741294,0.409667673716012,0.541591320072333,0.512417218543046,0.387382401770891,0.438083788032923,0.338990182328191,0.338271341788341,0.325744444444444,0.318025641025641,0.267464285714286,0.256227272727273,0.461122244488978,0.278781725888325,0.563138615770195,0.482794218857536,0.3208,0.416666666666667,0.272581507215393,0.361392405063291,0.47885050048434,0.315487217487958,0.336490904518401,0.257666666666667,0.339490276174407,0.339701492537313,0.311151079136691,0.56692242114237,0.501305483028721,0.414201183431953,0.485281749369218,0.410108896650914,0.382352941176471,0.423681419342397,0.599250936329588,0.49203821656051,0.287799315849487,0.411021233569262,0.25,0.209609440854173,0.549026081214922,0.352293577981651,0.365238095238095,0.478,0.386666666666667,0.406574394463668,0.55,0.858632676709154,0.6,0.498701298701299,0.582983193277311,0.888888888888889,0.427523727351165,0.454059829059829,0.397025171624714,0.128,0.323308270676692,0.339975093399751,0.309222423146474,0.442105263157895,0.478723404255319,0.557894736842105,0.632,0.656565656565657,0.459379615952733],"text":["Benton Harbor City of","Hampton Charter Twp. of","Charlotte City of","Royal Oak Twp.","Mason City of","River Rouge City of","Bronson City of","Hastings City of","St. Joseph City of","Ironwood City of","Watervliet City of","Baldwin Village of","Kaleva Village of","Greenville City of","Buchanan City of","Hillsdale City of","Three Rivers City of","Hart City of","Hartford City of","Brown City City of","Berrien Springs Village of","West Branch City of","Lakeview Village of","Chesaning Village of","Mt. Morris City of","Newaygo City of","St. Charles Village of","Plainwell City of","Mackinaw City Village of","Cass City Village of","Fennville City of","Quincy Village of","Spring Lake Village of","Union City Village of","Bessemer City of","Negaunee City of","Plymouth City of","Beecher Metropolitan District","Hudsonville City of","St. Louis City of","Carrollton Twp.","Manistee City of","St. Clair River Water Authority","Algonac City of","Marquette County - KI-Sawyer","Sandusky City of","Croswell City of","Hudson City of","Auburn City of","Howard City Village of","Highland Park City of","Ferndale City of","Hazel Park City of","Royal Oak City of","Oak Park City of","Harper Woods City of","Owosso City of","St. Clair Shores City of","Muskegon City of","Muskegon Heights City of","Hamtramck City of","Pontiac City of","Detroit Water and Sewerage","Roseville City of","Taylor City of","Sturgis City of","Allen Park City of","Livonia City of","Wyandotte Water Department","Brownstown Charter Twp. of","Ovid City of","Saranac Village of","Pinconning City of","Roscommon Village of","Port Austin Area Sewer and Water Authority","Tilden Twp.","Battle Creek City of","Norway City of","Rochester Hills City of","Lincoln Park City of","Southgate City of","Wixom City of","Woodhaven City of","Cadillac City of","Berlin Twp.","Center Line City of","Brighton City of","St. Clair City of","Lathrup Village City of","Bad Axe City of","Rogers City City of","Baraga Village of","Bellevue Village of","Port Huron City of","harrison Charter Twp. of","Mt. Pleasant City of","Ishpeming City of","Forsyth Twp.","Capac Village of","Three Oaks Village of","Montrose City of","Coleman City of","Carson City City of","Warren City of","Clinton Charter Twp. of","Romulus City of","Huron Twp.","Fraser City of","Grand Haven City of","Grand Ledge City of","Ash Twp.","Allegan City of","Hancock City of","Boyne City City of","Douglas City of","Leoni Twp.","Elk Rapids Village of","Stanton City of","Portage Charter Twp. of","Athens Village of","Leslie City of","Melvindale City of","Albion City of","Clare City of","Birmingham City of","Shelby Village of","Whitehall City of","Saginaw City of","Harrison City of","Middleville Village of","East Lansing City of","Flat Rock City of","Rockford City of","Montague City of","Edmore Village of","Howell City of","Benton Charter Twp.","West Bloomfield Twp.","Belding City of","Richmond City of","Ontonagon Village of","Mendon Village of","Cassopolis Village of","Mt. Clemens City of","Menominee City of","Grass Lake Village of","Kalamazoo City of","Onaway City of","Onsted Village of","Bellaire Village of","Zeeland Board of Public Works","Elberta Village of","Dearborn City of","Schoolcraft Village of","Escanaba City of","Muir Village of","Pleasant Ridge City of","Emmett Charter Twp.","Big Rapids City of","Decatur Village of","Grand Rapids City of","Garden City","Vermontville Village of","Ann Arbor City of","Bangor Charter Twp. of","Dexter City of","Ishpeming Twp.","Richland Twp","Mayville Village of","Lyons Village of","Sheridan Village of","New Lothrop Village of","Bessemer Twp.","Milan City of","Grosse Pointe Woods City of","Waterford Twp.","Midland City of","Union Charter Twp. of","Clawson City of","Petosky City of","Williamston City of","Gogebic Range Water Authority","Fowlerville Village of","Crystal Falls Twp.","Chassell Twp.","Ubly Village of","Traverse City City of","South Lyon City of","Swartz Creek City of","Portland City of","Munising City of","Armada Village of","Maple Rapids Village of","Northport Village of","Benzonia Village of","Marshall City of","Sault Ste. Marie City of","L'Anse Village of","Beverly Hills Village of","Ludington City of","Houghton City of","Romeo Village of","Adams Twp.","Interior Twp.","Wayland City of","Northville City of","St. Joseph City of: Application 2","Republic Twp.","Coopersville City of","Iron Mountain City of","Newberry Village of","Gibraltar City of","Marlette City of","Redford Charter Twp of","Allendale Charter Twp.","Sumpter Twp.","Clay Twp.","Bay County Department of Water and Sewer","Kinross Charter Twp.","Springfield City of","Ira Twp.","Marquette Charter Twp. of","Roosevelt Park City of","North Muskegon City of","Pinckney Village of","Nashville Village of","Lexington Village of","Pigeon Village of","Grosse Pointe City of","Coldwater Board of Public Utilities","Rochester City of","Alma City of","Macomb Twp","Shelby Twp.","Van Buren Twp.","Auburn Hills City of","Berkley City of","Tittabawassee Twp.","Alpena Twp.","Vicksburg Village of","Galesburg City of","Corunna City of","Lawton Village of","St. Johns City of","Manistique City of","Monroe City of","New Baltimore City of","Plainfield Charter Twp.","Summit Twp.","South Rockwood Village of","Homer Village of","Colon Village of","Marcellus Village of","Ely Twp.","Ecorse City of","Cheboygan City of","Grosse Pointe Park City of","Grosse Ile Twp.","Eaton Rapids City of","Gladstone City of","St. Ignace City of","Otsego City of","Pennfield Charter Twp.","Cottrellville Twp","Iron River City of","Perry City of","Niles Charter Twp","Lockport Twp.","Augusta Village of","Sunfield Village of","Grant Twp.","Pentwater Village of","Torch Lake Twp.","Ford River Twp.","Central Lake Village of","Crystal Mountian Resort","Wakefield City of","Westphalia Village of","Suttons Bay Village of","Houghton County","Osceola Twp","Springport Village of","Sand Lake Village of","Pewamo Village of","Richmond Twp.","Rudyard Twp.","Germfask Twp.","Minden City Village of","Alpena City of"],"mode":"markers","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig1 <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(data, <span class="at">x =</span> <span class="sc">~</span>Population, <span class="at">y =</span> <span class="sc">~</span>ratio_serv_pop, <span class="at">text =</span> <span class="sc">~</span>data<span class="sc">$</span>City, <span class="at">type =</span> <span class="st">'scatter'</span>, <span class="at">mode =</span> <span class="st">'markers'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fig1 <span class="ot">&lt;-</span> fig1 <span class="sc">%&gt;%</span> <span class="fu">layout</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">70000</span>)), <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>)))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>fig1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4281cf90350cdd8e26ef" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4281cf90350cdd8e26ef">{"x":{"visdat":{"35f03ddb7aec":["function () ","plotlyVisDat"]},"cur_data":"35f03ddb7aec","attrs":{"35f03ddb7aec":{"x":{},"y":{},"text":{},"mode":"markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"range":[0,70000],"title":"Population"},"yaxis":{"domain":[0,1],"automargin":true,"range":[0,2],"title":"ratio_serv_pop"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[9670,9452,9074,1881,8458,7380,2349,9332,8789,5200,2160,1208,470,8776,4400,8305,7660,2126,3188,1316,1740,2139,1007,2683,4280,2050,2054,3804,870,2428,1865,2040,2400,1599,1914,4568,9132,8876,7349,6976,6103,6100,5850,4110,2835,2526,2422,2217,2011,1803,10806,22105,16347,57236,29654,14236,14380,60922,37213,10856,23313,63398,700000,48000,63131,11269,27216,94000,25044,30627,1616,1327,1245,1075,1004,328,51000,3227,74000,36517,29088,13498,12484,10355,9299,8257,7800,5300,4121,2980,2870,2204,1285,30000,26833,26000,6600,2479,1890,1556,1550,1243,1100,134056,97513,23989,15879,14480,10412,7854,7754,4998,4549,3735,2712,2064,1620,1422,1214,1100,1851,10312,8000,3110,20472,2040,2706,51508,1100,3500,32000,9932,7160,2479,1200,9232,5000,45192,5900,5874,3750,856,1800,18405,8599,1572,103527,880,947,1086,8100,353,101000,1525,12223,612,2526,11770,10601,1830,329000,27692,775,125000,13946,4715,2694,1500,950,824,649,581,650,7683,16135,72893,42000,12930,11845,8725,4077,3300,2931,1722,900,858,15000,11300,5557,3936,3700,1730,680,525,497,7000,14689,2457,10451,9592,7708,3750,1720,200,4003,5970,33000,700,4400,7620,1426,4500,1875,47078,21000,9549,9066,8664,6567,5200,5178,3910,3831,3786,2412,1655,1106,1208,5421,10813,7130,9383,90000,78000,28000,22000,14970,9850,5187,2906,2500,2028,1871,7900,3097,48582,11929,42000,22522,1675,1668,1173,1149,507,9512,4867,11050,10371,5340,4396,4385,3956,3908,3559,3029,2180,2100,1500,900,578,200,863,500,385,952,450,2318,936,874,500,1330,803,553,475,470,380,250,198,10155],"y":[0.607755946225439,0.316017774016081,0.424068767908309,0.409356725146199,0.344998817687397,0.409891598915989,0.386121753937846,0.24710672953279,0.44089202412106,0.583461538461538,0.378240740740741,0.324503311258278,0.565957446808511,0.387648131267092,0.370909090909091,0.337627934978928,0.3588772845953,0.41486359360301,0.266624843161857,0.496200607902736,0.448275862068966,0.456755493221131,0.482621648460775,0.413715989563921,0.250467289719626,0.319024390243902,0.422103213242454,0.361461619348055,0.775862068965517,0.452635914332784,0.33941018766756,0.0308823529411765,0.529583333333333,0.42901813633521,0.542319749216301,0.392950963222417,0.363447218572054,0.397025687246507,0.294870050346986,0.202408256880734,0.397017860068819,0.491803278688525,0.125982905982906,0.495133819951338,0.428571428571429,0.393111638954869,0.365813377374071,0.420838971583221,0.473893585280955,0.306711037160288,0.263279659448455,0.453788735580185,0.463081911054016,0.414791390034244,0.360861941053484,0.398356279853892,0.465368567454798,0.415334361971045,0.346599306693897,0.349207811348563,0.248445073564106,0.305877157008108,0.444285714285714,0.337875,0.352251667168269,0.381134084657024,0.433201058201058,0.409851063829787,0.431959750838524,0.327390864270089,0.405940594059406,0.382064807837227,0.51566265060241,0.461395348837209,0.73804780876494,0.448170731707317,0.378745098039216,0.524325999380229,0.32272972972973,0.432675192376154,0.362004950495049,0.254778485701585,0.30967638577379,0.370738773539353,0.378105172599204,0.296960155019983,0.585128205128205,0.443962264150943,0.432419315700073,0.484563758389262,0.519163763066202,0.323049001814882,0.412451361867704,0.406133333333333,0.029627697238475,0.213846153846154,0.446969696969697,0.331988705123033,0.377777777777778,0.529562982005141,0.430322580645161,0.395012067578439,0.468181818181818,0.380438025899624,0.291735460912904,0.333402809621076,0.311543548082373,0.370027624309392,0.408470995005763,0.374204227145404,0.298555584214599,0.344737895158063,0.422730270389096,0.484069611780455,0.414823008849558,0.333333333333333,0.490123456790123,0.990857946554149,0.441515650741351,0.454545454545455,0.238249594813614,0.0755430566330489,0.5625,0.928938906752412,0.0568093005080109,3.91127450980392,0.305986696230599,0.0289275452356915,31.2327272727273,0.227142857142857,0.0364375,0.79893274265002,0.412011173184358,0.948366276724486,1.06916666666667,0.0565424610051993,0.5144,0.0617808461674633,3.19152542372881,0.312223357167177,0.696,1.67172897196262,0.244444444444444,0.35267590328715,0.482381672287475,0.365776081424936,0.400001931863185,0.539772727272727,0.378035902851109,0.530386740331492,0.293703703703704,68.3541076487252,0.343683168316832,0.416393442622951,0.453734762333306,0.431372549019608,0.456057007125891,0.0845369583687341,0.244127912461089,0.39672131147541,0.246954407294833,0.418965766286292,0.424516129032258,0.15968,0.337659543955256,0.321102863202545,0.377505567928731,0.373333333333333,0.426315789473684,0.391990291262136,0.468412942989214,0.456110154905336,0.676923076923077,0.324742938956137,0.427083978927797,0.338907714046616,0.391690476190476,0.149265274555298,0.413676656817222,0.384068767908309,0.369143978415502,0.0227272727272727,0.272262026612078,0.371660859465738,0.391111111111111,0.51981351981352,0.497533333333333,0.32283185840708,0.381860716213784,0.371951219512195,0.297297297297297,0.358959537572254,0.388235294117647,0.657142857142857,0.545271629778672,0.463428571428571,0.347198583974403,0.450956450956451,0.41823748923548,0.463407005838198,0.228853139595226,0.445866666666667,0.365116279069767,0.535,0.295278541094179,0.126633165829146,0.117424242424242,0.478571428571429,0.316136363636364,0.496325459317585,0.569424964936886,0.355555555555556,0.444266666666667,0.435957347380942,0.163809523809524,0.51293329144413,0.520185307743216,0.345798707294552,0.149840109639105,0.339615384615385,0.269988412514484,0.29923273657289,0.368572174367006,0.467776016904385,0.286069651741294,0.409667673716012,0.541591320072333,0.512417218543046,0.387382401770891,0.438083788032923,0.338990182328191,0.338271341788341,0.325744444444444,0.318025641025641,0.267464285714286,0.256227272727273,0.461122244488978,0.278781725888325,0.563138615770195,0.482794218857536,0.3208,0.416666666666667,0.272581507215393,0.361392405063291,0.47885050048434,0.315487217487958,0.336490904518401,0.257666666666667,0.339490276174407,0.339701492537313,0.311151079136691,0.56692242114237,0.501305483028721,0.414201183431953,0.485281749369218,0.410108896650914,0.382352941176471,0.423681419342397,0.599250936329588,0.49203821656051,0.287799315849487,0.411021233569262,0.25,0.209609440854173,0.549026081214922,0.352293577981651,0.365238095238095,0.478,0.386666666666667,0.406574394463668,0.55,0.858632676709154,0.6,0.498701298701299,0.582983193277311,0.888888888888889,0.427523727351165,0.454059829059829,0.397025171624714,0.128,0.323308270676692,0.339975093399751,0.309222423146474,0.442105263157895,0.478723404255319,0.557894736842105,0.632,0.656565656565657,0.459379615952733],"text":["Benton Harbor City of","Hampton Charter Twp. of","Charlotte City of","Royal Oak Twp.","Mason City of","River Rouge City of","Bronson City of","Hastings City of","St. Joseph City of","Ironwood City of","Watervliet City of","Baldwin Village of","Kaleva Village of","Greenville City of","Buchanan City of","Hillsdale City of","Three Rivers City of","Hart City of","Hartford City of","Brown City City of","Berrien Springs Village of","West Branch City of","Lakeview Village of","Chesaning Village of","Mt. Morris City of","Newaygo City of","St. Charles Village of","Plainwell City of","Mackinaw City Village of","Cass City Village of","Fennville City of","Quincy Village of","Spring Lake Village of","Union City Village of","Bessemer City of","Negaunee City of","Plymouth City of","Beecher Metropolitan District","Hudsonville City of","St. Louis City of","Carrollton Twp.","Manistee City of","St. Clair River Water Authority","Algonac City of","Marquette County - KI-Sawyer","Sandusky City of","Croswell City of","Hudson City of","Auburn City of","Howard City Village of","Highland Park City of","Ferndale City of","Hazel Park City of","Royal Oak City of","Oak Park City of","Harper Woods City of","Owosso City of","St. Clair Shores City of","Muskegon City of","Muskegon Heights City of","Hamtramck City of","Pontiac City of","Detroit Water and Sewerage","Roseville City of","Taylor City of","Sturgis City of","Allen Park City of","Livonia City of","Wyandotte Water Department","Brownstown Charter Twp. of","Ovid City of","Saranac Village of","Pinconning City of","Roscommon Village of","Port Austin Area Sewer and Water Authority","Tilden Twp.","Battle Creek City of","Norway City of","Rochester Hills City of","Lincoln Park City of","Southgate City of","Wixom City of","Woodhaven City of","Cadillac City of","Berlin Twp.","Center Line City of","Brighton City of","St. Clair City of","Lathrup Village City of","Bad Axe City of","Rogers City City of","Baraga Village of","Bellevue Village of","Port Huron City of","harrison Charter Twp. of","Mt. Pleasant City of","Ishpeming City of","Forsyth Twp.","Capac Village of","Three Oaks Village of","Montrose City of","Coleman City of","Carson City City of","Warren City of","Clinton Charter Twp. of","Romulus City of","Huron Twp.","Fraser City of","Grand Haven City of","Grand Ledge City of","Ash Twp.","Allegan City of","Hancock City of","Boyne City City of","Douglas City of","Leoni Twp.","Elk Rapids Village of","Stanton City of","Portage Charter Twp. of","Athens Village of","Leslie City of","Melvindale City of","Albion City of","Clare City of","Birmingham City of","Shelby Village of","Whitehall City of","Saginaw City of","Harrison City of","Middleville Village of","East Lansing City of","Flat Rock City of","Rockford City of","Montague City of","Edmore Village of","Howell City of","Benton Charter Twp.","West Bloomfield Twp.","Belding City of","Richmond City of","Ontonagon Village of","Mendon Village of","Cassopolis Village of","Mt. Clemens City of","Menominee City of","Grass Lake Village of","Kalamazoo City of","Onaway City of","Onsted Village of","Bellaire Village of","Zeeland Board of Public Works","Elberta Village of","Dearborn City of","Schoolcraft Village of","Escanaba City of","Muir Village of","Pleasant Ridge City of","Emmett Charter Twp.","Big Rapids City of","Decatur Village of","Grand Rapids City of","Garden City","Vermontville Village of","Ann Arbor City of","Bangor Charter Twp. of","Dexter City of","Ishpeming Twp.","Richland Twp","Mayville Village of","Lyons Village of","Sheridan Village of","New Lothrop Village of","Bessemer Twp.","Milan City of","Grosse Pointe Woods City of","Waterford Twp.","Midland City of","Union Charter Twp. of","Clawson City of","Petosky City of","Williamston City of","Gogebic Range Water Authority","Fowlerville Village of","Crystal Falls Twp.","Chassell Twp.","Ubly Village of","Traverse City City of","South Lyon City of","Swartz Creek City of","Portland City of","Munising City of","Armada Village of","Maple Rapids Village of","Northport Village of","Benzonia Village of","Marshall City of","Sault Ste. Marie City of","L'Anse Village of","Beverly Hills Village of","Ludington City of","Houghton City of","Romeo Village of","Adams Twp.","Interior Twp.","Wayland City of","Northville City of","St. Joseph City of: Application 2","Republic Twp.","Coopersville City of","Iron Mountain City of","Newberry Village of","Gibraltar City of","Marlette City of","Redford Charter Twp of","Allendale Charter Twp.","Sumpter Twp.","Clay Twp.","Bay County Department of Water and Sewer","Kinross Charter Twp.","Springfield City of","Ira Twp.","Marquette Charter Twp. of","Roosevelt Park City of","North Muskegon City of","Pinckney Village of","Nashville Village of","Lexington Village of","Pigeon Village of","Grosse Pointe City of","Coldwater Board of Public Utilities","Rochester City of","Alma City of","Macomb Twp","Shelby Twp.","Van Buren Twp.","Auburn Hills City of","Berkley City of","Tittabawassee Twp.","Alpena Twp.","Vicksburg Village of","Galesburg City of","Corunna City of","Lawton Village of","St. Johns City of","Manistique City of","Monroe City of","New Baltimore City of","Plainfield Charter Twp.","Summit Twp.","South Rockwood Village of","Homer Village of","Colon Village of","Marcellus Village of","Ely Twp.","Ecorse City of","Cheboygan City of","Grosse Pointe Park City of","Grosse Ile Twp.","Eaton Rapids City of","Gladstone City of","St. Ignace City of","Otsego City of","Pennfield Charter Twp.","Cottrellville Twp","Iron River City of","Perry City of","Niles Charter Twp","Lockport Twp.","Augusta Village of","Sunfield Village of","Grant Twp.","Pentwater Village of","Torch Lake Twp.","Ford River Twp.","Central Lake Village of","Crystal Mountian Resort","Wakefield City of","Westphalia Village of","Suttons Bay Village of","Houghton County","Osceola Twp","Springport Village of","Sand Lake Village of","Pewamo Village of","Richmond Twp.","Rudyard Twp.","Germfask Twp.","Minden City Village of","Alpena City of"],"mode":"markers","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="chi-square-testpearson-correlation-test" class="level2">
+<h2 class="anchored" data-anchor-id="chi-square-testpearson-correlation-test">Chi square test/Pearson Correlation test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>poptable <span class="ot">&lt;-</span> data<span class="sc">$</span>Population</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>servtable <span class="ot">&lt;-</span> data<span class="sc">$</span>Total_service_lines</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(poptable,servtable)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  x and y
+t = 62.001, df = 287, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.9556190 0.9718514
+sample estimates:
+      cor 
+0.9646386 </code></pre>
+</div>
+</div>
+<p>The output you provided is the result of a Pearson’s product-moment correlation test. Let’s break down the information:</p>
+<ol type="1">
+<li><p><strong>data</strong>: This line indicates that the test was performed on variables “x” and “y”.</p></li>
+<li><p><strong>t-value</strong>: The t-value is a measure of the strength and direction of the correlation. In this case, the t-value is 62.001.</p></li>
+<li><p><strong>df</strong>: df represents the degrees of freedom, which is a measure of the amount of information available for the test. In this case, there are 287 degrees of freedom.</p></li>
+<li><p><strong>p-value</strong>: The p-value is a measure of the statistical significance of the correlation. It indicates the probability of observing a correlation as extreme as the one obtained in the sample, assuming the null hypothesis is true. A p-value less than 0.05 (commonly used significance level) suggests strong evidence against the null hypothesis. In this case, the p-value is reported as less than 2.2e-16, which is essentially 0, indicating a highly significant result.</p></li>
+<li><p><strong>alternative hypothesis</strong>: The alternative hypothesis states that the true correlation is not equal to 0. In other words, it suggests that there is a significant correlation between variables “x” and “y”.</p></li>
+<li><p><strong>confidence interval</strong>: The 95 percent confidence interval provides a range of values within which we can be 95% confident that the true correlation lies. In this case, the confidence interval is reported as 0.9556190 to 0.9718514.</p></li>
+<li><p><strong>sample estimate</strong>: The sample estimate is the point estimate of the correlation coefficient. In this case, the estimated correlation coefficient (cor) is 0.9646386, indicating a strong positive correlation between “x” and “y”.</p></li>
+</ol>
+<p>In summary, the results indicate a highly significant and strong positive correlation (0.9646) between variables “x” and “y”, suggesting that as “x” increases, “y” tends to increase as well. The correlation is statistically significant at a 95% confidence level, based on the low p-value (&lt; 2.2e-16) and the confidence interval (0.9556 to 0.9719).</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

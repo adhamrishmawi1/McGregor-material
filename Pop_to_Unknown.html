@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adham Rishmawi">
+
+<title>Pop_to_unknown</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Pop_to_Unknown_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Pop_to_Unknown_files/libs/quarto-html/quarto.js"></script>
+<script src="Pop_to_Unknown_files/libs/quarto-html/popper.min.js"></script>
+<script src="Pop_to_Unknown_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Pop_to_Unknown_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Pop_to_Unknown_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Pop_to_Unknown_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Pop_to_Unknown_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Pop_to_Unknown_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Pop_to_Unknown_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="Pop_to_Unknown_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="Pop_to_Unknown_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="Pop_to_Unknown_files/libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="Pop_to_Unknown_files/libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="Pop_to_Unknown_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="Pop_to_Unknown_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="Pop_to_Unknown_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="Pop_to_Unknown_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="Pop_to_Unknown_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="Pop_to_Unknown_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pop_to_unknown</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adham Rishmawi </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="setting" class="level2">
+<h2 class="anchored" data-anchor-id="setting">Setting</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmmTMB)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rworldmap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="loading-in-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-in-the-data">loading in the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"~/Mcgregor Project/Data material/CSV-extracts from sql/Population_to_unknown_lines.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pearson-test" class="level2">
+<h2 class="anchored" data-anchor-id="pearson-test">Pearson Test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>poptable <span class="ot">&lt;-</span> data<span class="sc">$</span>population</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>servtable <span class="ot">&lt;-</span> data<span class="sc">$</span>Total_service</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>unktable <span class="ot">&lt;-</span> data<span class="sc">$</span>Total_unknown</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>UNKSERVtable <span class="ot">&lt;-</span> data<span class="sc">$</span>Total_unknown <span class="sc">/</span> data<span class="sc">$</span>Total_service</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span>  <span class="fu">cor.test</span>(poptable,unktable)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  x and y
+t = 14.27, df = 285, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.5725582 0.7083803
+sample estimates:
+      cor 
+0.6455451 </code></pre>
+</div>
+</div>
+<ol type="1">
+<li><p><strong>data</strong>: The test was performed on variables “x” and “y”.</p></li>
+<li><p><strong>t-value</strong>: The t-value is 14.27, which represents the strength and direction of the correlation. A higher absolute t-value indicates a stronger correlation. In this case, the positive t-value suggests a positive correlation between the variables.</p></li>
+<li><p><strong>df</strong>: The degrees of freedom (df) is 285, indicating the amount of information available for the test.</p></li>
+<li><p><strong>p-value</strong>: The p-value is less than 2.2e-16, which indicates a highly significant result. The small p-value provides strong evidence against the null hypothesis and suggests that the correlation is statistically significant.</p></li>
+<li><p><strong>alternative hypothesis</strong>: The alternative hypothesis states that the true correlation is not equal to 0, implying that there is a significant correlation between variables “x” and “y”.</p></li>
+<li><p><strong>confidence interval</strong>: The 95 percent confidence interval is reported as 0.5725582 to 0.7083803. It provides a range of values within which we can be 95% confident that the true correlation lies.</p></li>
+<li><p><strong>sample estimate</strong>: The sample estimate (cor) is 0.6455451, which represents the estimated correlation coefficient. It indicates a moderate positive correlation between “x” and “y”.</p></li>
+</ol>
+<p>In summary, the results indicate a highly significant and moderate positive correlation (0.6455) between variables “x” and “y”. The t-value and p-value suggest that this correlation is statistically significant at a 95% confidence level. The confidence interval (0.5726 to 0.7084) provides a range within which we can be 95% confident that the true correlation lies.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required packages</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a table from the result</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>result_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Test =</span> <span class="st">"Pearson's correlation"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">t_value =</span> result<span class="sc">$</span>statistic,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">df =</span> result<span class="sc">$</span>parameter,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">p_value =</span> <span class="fu">format</span>(result<span class="sc">$</span>p.value, <span class="at">scientific =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative_hypothesis =</span> result<span class="sc">$</span>alternative,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">confidence_interval =</span> <span class="fu">paste0</span>(<span class="st">"["</span>, result<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="st">", "</span>, result<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="st">"]"</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_estimates =</span> result<span class="sc">$</span>estimate</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Format the table</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="fu">kable</span>(result_table[, <span class="sc">-</span><span class="dv">1</span>], <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">format =</span> <span class="st">"html"</span>, <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"Correlation Test Result"</span> <span class="ot">=</span> <span class="dv">6</span>))  <span class="co"># Adjust the header row to have 6 columns</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the formatted table</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>formatted_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Correlation Test Result</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> t_value </th>
+   <th style="text-align:center;"> df </th>
+   <th style="text-align:center;"> p_value </th>
+   <th style="text-align:center;"> alternative_hypothesis </th>
+   <th style="text-align:center;"> confidence_interval </th>
+   <th style="text-align:center;"> sample_estimates </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> t </td>
+   <td style="text-align:center;"> 14.26966 </td>
+   <td style="text-align:center;"> 285 </td>
+   <td style="text-align:center;"> 3.152889e-35 </td>
+   <td style="text-align:center;"> two.sided </td>
+   <td style="text-align:center;"> [0.572558170654408, 0.708380345577091] </td>
+   <td style="text-align:center;"> 0.6455451 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> poptable, <span class="at">y =</span> unktable)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Population"</span>, <span class="at">y =</span> <span class="st">"Unknown service lines"</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Scatter Plot of Pop vs Unknown"</span>)<span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">150000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Pop_to_Unknown_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> data, <span class="at">x =</span> <span class="sc">~</span>poptable, <span class="at">y =</span> <span class="sc">~</span>unktable, <span class="at">type =</span> <span class="st">"scatter"</span>, <span class="at">mode =</span> <span class="st">'markers'</span>, <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">opacity =</span> <span class="fl">0.9</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> fig <span class="sc">%&gt;%</span> <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">'Population to lead city ratio in Michigan'</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">showgrid =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">showgrid =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">showlegend =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-60db7d1001fc6805cb74" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-60db7d1001fc6805cb74">{"x":{"visdat":{"8c24719d11d3":["function () ","plotlyVisDat"]},"cur_data":"8c24719d11d3","attrs":{"8c24719d11d3":{"x":{},"y":{},"mode":"markers","marker":{"opacity":0.9},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Population to lead city ratio in Michigan","xaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"poptable"},"yaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"unktable"},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[9670,9452,9074,1881,8458,7380,2349,9332,8789,5200,2160,1208,470,8776,4400,8305,7660,2126,3188,1316,1740,2139,1007,2683,4280,2050,2054,3804,870,2428,1865,2040,2400,1599,1914,4568,9132,8876,7349,6976,6103,6100,5850,4110,2835,2526,2422,2217,2011,1803,10806,22105,16347,57236,29654,14236,14380,60922,37213,10856,23313,63398,700000,48000,63131,11269,27216,94000,25044,30627,1616,1327,1245,1075,1004,328,51000,3227,74000,36517,29088,13498,12484,10355,9299,8257,7800,5300,4121,2980,2870,2204,1285,30000,26833,26000,6600,2479,1890,1556,1550,1243,1100,134056,97513,23989,15879,14480,10412,7854,7754,4998,4549,3735,2064,1620,1422,1214,1100,1851,10312,8000,3110,20472,2040,2706,51508,1100,3500,32000,9932,7160,2479,1200,9232,5000,45192,5900,5874,3750,856,18405,8599,1572,103527,880,947,1086,8100,353,101000,1525,12223,612,2526,11770,10601,1830,329000,27692,775,125000,13946,4715,2694,1500,950,824,649,581,650,7683,16135,72893,42000,12930,11845,8725,4077,3300,2931,1722,900,858,15000,11300,5557,3936,3700,1730,680,525,497,7000,14689,2457,10451,9592,7708,3750,1720,200,4003,5970,33000,700,4400,7620,1426,4500,1875,47078,21000,9549,9066,8664,6567,5200,5178,3910,3831,3786,2412,1655,1106,1208,5421,10813,7130,9383,90000,78000,28000,22000,14970,9850,5187,2906,2500,2028,1871,7900,3097,48582,11929,42000,22522,1675,1668,1173,1149,507,9512,4867,11050,10371,5340,4396,4385,3956,3908,3559,3029,2180,2100,1500,900,578,200,863,500,385,952,450,2318,936,874,500,1330,803,553,475,470,380,250,198,10155],"y":[2733,374,3020,693,885,0,0,200,825,0,336,68,0,765,0,1865,1076,453,654,0,439,309,37,717,424,554,886,0,0,350,157,0,64,0,75,1774,1231,0,0,403,0,2061,3314,1181,0,713,286,782,0,0,1337,88,563,0,14,3496,1579,648,0,0,0,1007,28922,11818,100,2081,0,25060,0,3986,0,354,0,175,0,147,250,1283,2241,11657,9826,0,0,0,0,2125,0,1539,1638,0,0,434,0,4289,6713,2720,0,35,714,797,0,0,0,10000,19880,0,0,0,0,2006,2215,0,511,158,0,626,433,50,268,0,20,100,187,0,0,80,2794,307,0,261,50,1299,0,12,0,25,11085,869,0,0,180,2880,2221,0,974,0,0,0,0,9,3024,47,0,214,0,147,441,168,0,1202,172,5214,1400,460,0,0,180,0,0,58,40,1204,1589,3212,4748,0,1181,2304,465,0,0,0,0,0,0,0,0,241,298,0,0,0,0,869,0,10,1359,1578,364,646,0,0,22,218,825,0,74,239,0,0,53,200,0,0,0,462,0,70,203,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,416,0,1680,0,55,20,25,0,20,526,0,0,0,0,0,80,0,0,474,260,0,0,0,167,40,351,0,140,11,11,0,0,14,0,0,30,0,15,0,0,0,0,0,364,20,0,0,0,0,0,0,0,1680],"mode":"markers","marker":{"color":"rgba(31,119,180,1)","opacity":0.9,"line":{"color":"rgba(31,119,180,1)"}},"type":"scatter","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="second-pearson-test" class="level2">
+<h2 class="anchored" data-anchor-id="second-pearson-test">Second Pearson Test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span>  <span class="fu">cor.test</span>(UNKSERVtable,poptable)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  x and y
+t = 0.1507, df = 285, p-value = 0.8803
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.1069653  0.1245783
+sample estimates:
+        cor 
+0.008926176 </code></pre>
+</div>
+</div>
+<p>The results you provided are related to Pearson’s product-moment correlation coefficient, which is a measure of the strength and direction of the linear relationship between two variables, denoted as x and y. Let’s break down the results:</p>
+<ol type="1">
+<li><p>t-value: The t-value measures the strength of the evidence against the null hypothesis, which states that there is no correlation between x and y. In your case, the t-value is 0.1507.</p></li>
+<li><p>Degrees of freedom (df): Degrees of freedom represent the number of independent observations available for estimating the population parameters. In this case, you have 285 degrees of freedom.</p></li>
+<li><p>p-value: The p-value indicates the probability of obtaining a correlation coefficient as extreme as the one observed (or even more extreme) if the null hypothesis were true (i.e., if there were no correlation). In your case, the p-value is 0.8803, which is relatively high. This suggests that there is weak evidence against the null hypothesis, and the observed correlation could be due to chance.</p></li>
+<li><p>Alternative hypothesis: The alternative hypothesis states what we are trying to determine, which is whether the true correlation between x and y is not equal to zero. It implies that there is some relationship between the variables.</p></li>
+<li><p>95 percent confidence interval: The confidence interval provides a range of values within which we are reasonably confident that the true correlation lies. In your case, the confidence interval is -0.1069653 to 0.1245783. Since this interval contains zero, it further supports the notion that the observed correlation is not significantly different from zero.</p></li>
+<li><p>Sample estimates: The sample estimate is the observed correlation coefficient between x and y. In your case, the estimated correlation coefficient is 0.008926176, indicating a very weak and practically negligible correlation between the variables.</p></li>
+</ol>
+<p>In summary, based on the provided results, there is no strong evidence to support a significant correlation between x and y. The observed correlation is close to zero, and it could be due to random chance rather than a true relationship between the variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> poptable, <span class="at">y =</span> UNKSERVtable)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Population"</span>, <span class="at">y =</span> <span class="st">"Unknown service lines"</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Scatter Plot of Pop vs Unknown"</span>)<span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">150000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Pop_to_Unknown_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig1 <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> data, <span class="at">x =</span> <span class="sc">~</span>poptable, <span class="at">y =</span> <span class="sc">~</span>UNKSERVtable, <span class="at">type =</span> <span class="st">"scatter"</span>, <span class="at">mode =</span> <span class="st">'markers'</span>, <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">opacity =</span> <span class="fl">0.9</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fig1 <span class="ot">&lt;-</span> fig1<span class="sc">|&gt;</span><span class="fu">layout</span>(<span class="at">title =</span> <span class="st">'unknown/service to population city ratio in Michigan'</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">showgrid =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">showgrid =</span> <span class="cn">FALSE</span>), <span class="at">showlegend =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>fig1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-695cd234675a0d2c52fe" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-695cd234675a0d2c52fe">{"x":{"visdat":{"8c246bc63397":["function () ","plotlyVisDat"]},"cur_data":"8c246bc63397","attrs":{"8c246bc63397":{"x":{},"y":{},"mode":"markers","marker":{"opacity":0.9},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"unknown/service to population city ratio in Michigan","xaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"poptable"},"yaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"UNKSERVtable"},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[9670,9452,9074,1881,8458,7380,2349,9332,8789,5200,2160,1208,470,8776,4400,8305,7660,2126,3188,1316,1740,2139,1007,2683,4280,2050,2054,3804,870,2428,1865,2040,2400,1599,1914,4568,9132,8876,7349,6976,6103,6100,5850,4110,2835,2526,2422,2217,2011,1803,10806,22105,16347,57236,29654,14236,14380,60922,37213,10856,23313,63398,700000,48000,63131,11269,27216,94000,25044,30627,1616,1327,1245,1075,1004,328,51000,3227,74000,36517,29088,13498,12484,10355,9299,8257,7800,5300,4121,2980,2870,2204,1285,30000,26833,26000,6600,2479,1890,1556,1550,1243,1100,134056,97513,23989,15879,14480,10412,7854,7754,4998,4549,3735,2064,1620,1422,1214,1100,1851,10312,8000,3110,20472,2040,2706,51508,1100,3500,32000,9932,7160,2479,1200,9232,5000,45192,5900,5874,3750,856,18405,8599,1572,103527,880,947,1086,8100,353,101000,1525,12223,612,2526,11770,10601,1830,329000,27692,775,125000,13946,4715,2694,1500,950,824,649,581,650,7683,16135,72893,42000,12930,11845,8725,4077,3300,2931,1722,900,858,15000,11300,5557,3936,3700,1730,680,525,497,7000,14689,2457,10451,9592,7708,3750,1720,200,4003,5970,33000,700,4400,7620,1426,4500,1875,47078,21000,9549,9066,8664,6567,5200,5178,3910,3831,3786,2412,1655,1106,1208,5421,10813,7130,9383,90000,78000,28000,22000,14970,9850,5187,2906,2500,2028,1871,7900,3097,48582,11929,42000,22522,1675,1668,1173,1149,507,9512,4867,11050,10371,5340,4396,4385,3956,3908,3559,3029,2180,2100,1500,900,578,200,863,500,385,952,450,2318,936,874,500,1330,803,553,475,470,380,250,198,10155],"y":[0.465033180193976,0.125209240040174,0.784823284823285,0.9,0.303289924605894,0,0,0.0867302688638335,0.212903225806452,0,0.411260709914321,0.173469387755102,0,0.224867724867725,0,0.665121255349501,0.391415060021826,0.513605442176871,0.769411764705882,0,0.562820512820513,0.316274309109519,0.0761316872427984,0.645945945945946,0.395522388059701,0.847094801223242,1.02191464821223,0,0,0.318471337579618,0.248025276461295,0,0.0503540519276161,0,0.0722543352601156,0.988300835654596,0.370894847845737,0,0,0.285410764872521,0,0.687,4.4966078697422,0.58034398034398,0,0.718026183282981,0.322799097065463,0.838156484458735,0,0,0.469947275922671,0.00877280430664939,0.0743725231175694,0,0.00130828894495842,0.616469758420032,0.235953377166766,0.0256096115085168,0,0,0,0.0519286303630363,0.0929967845659164,0.728696510050561,0.00449680726684054,0.484516880093132,0,0.650469812594092,0,0.397526677969482,0,0.698224852071006,0,0.352822580645161,0,1,0.0129426382273763,0.758274231678487,0.0938363621137258,0.737784810126582,0.933143399810066,0,0,0,0,0.866639477977161,0,0.654058648533787,0.919191919191919,0,0,0.609550561797753,0,0.352019041365726,8.4440251572327,0.489208633093525,0,0.0425273390036452,1,0.967233009708738,0,0,0,0.196078431372549,0.698818897637795,0,0,0,0,0.682545083361688,0.956803455723542,0,0.265730629225169,0.0873893805309734,0,0.788413098236776,0.307310149041874,0.0932835820895522,0.536,0,0.0256739409499358,0.0222222222222222,0.0647282796815507,0,0,0.0966183574879227,1.8751677852349,0.00893584817790197,0,0.223842195540309,0.00630119722747322,0.440338983050847,0,0.00935307872174591,0,0.00972006220839813,3.97027220630372,0.0461497610196495,0,0,0.125786163522013,0.443691264828224,0.535438765670203,0,0.02352032068774,0,0,0,0,0.000372995151063036,0.0871168471998156,0.0740157480314961,0,0.810606060606061,0,0.147738693467337,0.170401854714065,0.231404958677686,0,0.103602827098776,0.522796352583587,0.26122244488978,0.297303036738161,0.303830911492735,0,0,0.444444444444444,0,0,0.218867924528302,0.0909090909090909,0.482565130260521,0.23059062545349,0.130019430051813,0.288614673880007,0,0.241020408163265,0.687555953446732,0.308970099667774,0,0,0,0,0,0,0,0,0.164617486338798,0.270909090909091,0,0,0,0,0.267879161528977,0,0.00902527075812274,0.310912834591627,0.355005624296963,0.206349206349206,0.386363636363636,0,0,0.0186125211505922,0.288359788359788,0.212903225806452,0,0.0531991373112868,0.0631940772078265,0,0,0.063625450180072,0.00974468914441629,0,0,0,0.154205607476636,0,0.0396375990939977,0.145207439198856,0,0,0,0,0,0,0,0.00714285714285714,0,0,0,0,0,0,0,0.0602636534839925,0,0.575145498117083,0,0.0685785536159601,0.0236686390532544,0.0490196078431373,0,0.0134861766689144,0.0343185228681412,0,0,0,0,0,0.120300751879699,0,0,0.102686308492201,0.130260521042084,0,0,0,0.077207582061951,0.0316957210776545,0.215867158671587,0,0.187667560321716,0.00661455201443175,0.0143229166666667,0,0,0.0402298850574713,0,0,0.0404858299595142,0,0.078125,0,0,0,0,0,5.6875,0.0465116279069767,0,0,0,0,0,0,0,0.360128617363344],"mode":"markers","marker":{"color":"rgba(31,119,180,1)","opacity":0.9,"line":{"color":"rgba(31,119,180,1)"}},"type":"scatter","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

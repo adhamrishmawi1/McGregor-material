@@ -32,6 +32,7 @@ data <- read.csv("~/Mcgregor Project/Data material/CSV-extracts from sql/Populat
 poptable <- data$population
 servtable <- data$Total_service
 unktable <- data$Total_unknown
+UNKSERVtable <- data$Total_unknown / data$Total_service
 
 result <-  cor.test(poptable,unktable)
 print(result)
@@ -82,11 +83,64 @@ formatted_table
 
 ```
 
-```{r}
+```{r,warning=FALSE}
 ggplot(data, aes(x = poptable, y = unktable)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   labs(x = "Population", y = "Unknown service lines") +
   ggtitle("Scatter Plot of Pop vs Unknown")+
   xlim(0, 150000)
+```
+
+```{r}
+fig <- plot_ly(data = data, x = ~poptable, y = ~unktable, type = "scatter", mode = 'markers', marker = list(opacity = 0.9))
+fig <- fig %>% layout(title = 'Population to lead city ratio in Michigan',
+                      xaxis = list(showgrid = FALSE),
+                      yaxis = list(showgrid = FALSE),
+                      showlegend = FALSE)
+
+fig
+
+```
+
+## Second Pearson Test
+
+```{r}
+result1 <-  cor.test(UNKSERVtable,poptable)
+print(result1)
+```
+
+The results you provided are related to Pearson's product-moment correlation coefficient, which is a measure of the strength and direction of the linear relationship between two variables, denoted as x and y. Let's break down the results:
+
+1.  t-value: The t-value measures the strength of the evidence against the null hypothesis, which states that there is no correlation between x and y. In your case, the t-value is 0.1507.
+
+2.  Degrees of freedom (df): Degrees of freedom represent the number of independent observations available for estimating the population parameters. In this case, you have 285 degrees of freedom.
+
+3.  p-value: The p-value indicates the probability of obtaining a correlation coefficient as extreme as the one observed (or even more extreme) if the null hypothesis were true (i.e., if there were no correlation). In your case, the p-value is 0.8803, which is relatively high. This suggests that there is weak evidence against the null hypothesis, and the observed correlation could be due to chance.
+
+4.  Alternative hypothesis: The alternative hypothesis states what we are trying to determine, which is whether the true correlation between x and y is not equal to zero. It implies that there is some relationship between the variables.
+
+5.  95 percent confidence interval: The confidence interval provides a range of values within which we are reasonably confident that the true correlation lies. In your case, the confidence interval is -0.1069653 to 0.1245783. Since this interval contains zero, it further supports the notion that the observed correlation is not significantly different from zero.
+
+6.  Sample estimates: The sample estimate is the observed correlation coefficient between x and y. In your case, the estimated correlation coefficient is 0.008926176, indicating a very weak and practically negligible correlation between the variables.
+
+In summary, based on the provided results, there is no strong evidence to support a significant correlation between x and y. The observed correlation is close to zero, and it could be due to random chance rather than a true relationship between the variables.
+
+```{r warning= FALSE}
+ggplot(data, aes(x = poptable, y = UNKSERVtable)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Population", y = "Unknown service lines") +
+  ggtitle("Scatter Plot of Pop vs Unknown")+
+  xlim(0, 150000)
+```
+
+```{r}
+fig1 <- plot_ly(data = data, x = ~poptable, y = ~UNKSERVtable, type = "scatter", mode = 'markers', marker = list(opacity = 0.9))
+fig1 <- fig1|>layout(title = 'unknown/service to population city ratio in Michigan',
+          xaxis = list(showgrid = FALSE),
+         yaxis = list(showgrid = FALSE), showlegend = FALSE)
+
+
+fig1
 ```
