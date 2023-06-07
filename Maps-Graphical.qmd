@@ -1,0 +1,79 @@
+---
+title: "Visual-maps of michigan"
+author: "Adham Rishmawi"
+format: html
+editor: visual
+---
+
+## Libraries
+
+```{r warning=FALSE,message=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(ggmap)
+library(maps)
+library(dplyr)
+library(revgeo)
+library(sp)
+library(tmap)
+```
+
+## Data sets + Map Data
+
+```{r, warning=FALSE,message=FALSE}
+Population_to_unknown_lines <- read_csv("~/Mcgregor Project/Data material/CSV-extracts from sql/Population_to_unknown_lines.csv")
+map_data <- map_data("state", region= "michigan")
+```
+
+## Config Data sets to compatibility state
+
+```{r}
+#google's API key
+ggmap::register_google(key = "AIzaSyB_bVP1ljY7VcsQDSEnJXW4AHWwBqMKmZU")
+
+
+#altering data to add long and lat for cities
+cities_lat <- cbind(geocode(as.character(Population_to_unknown_lines$name)),Population_to_unknown_lines)
+```
+
+## Plotting Michigan-failed
+
+```{r}
+# MI <- map_data("state", region="michigan")
+# ggplot(MI, aes(x=long, y=lat))+geom_polygon()
+```
+
+```{r}
+# filtered_cities <- cities_lat %>%
+#   filter(lon >= -91, lon <= -80, lat >= 41, lat <= 49)
+# 
+# ggplot(filtered_cities, aes(x = lon, y = lat)) +
+#   geom_polygon() +
+#   coord_map() +
+#   geom_point(data = filtered_cities, aes(x = lon, y = lat), color = "orange")
+
+```
+
+## Map using package Tmap
+
+Error: Object cities_lat is neither from class sf, stars, Spatial, Raster, nor SpatRaster.
+
+```{r}
+
+
+# Convert cities_lat to an sf spatial object
+cities_sf <- st_as_sf(na.omit(cities_lat), coords = c("lon", "lat"))
+
+# Create a tmap object
+map <- tm_shape(cities_sf) +
+  tm_symbols(col = "purple", size = 0.01)
+
+# Set the map's extent to focus on Michigan
+map <- map +
+  tm_view(bbox = c(-90, 41, -80, 49))
+
+# Display the map
+tmap_mode("view")
+map
+
+```
