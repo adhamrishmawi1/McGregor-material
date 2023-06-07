@@ -74,7 +74,7 @@ cities_sf$proportion <- as.numeric(cities_sf$proportion)
 # Create a tmap object
 map <- tm_shape(cities_sf) +
   tm_symbols(col = "proportion", size = "proportion", palette = "RdYlBu") + 
-  tm_layout(bg.color = "black")
+  tm_layout(bg.color = "white")
 
 # Set the map's extent to focus on Michigan
 map <- map +
