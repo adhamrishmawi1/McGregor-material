@@ -15,6 +15,7 @@ library(maps)
 library(dplyr)
 library(revgeo)
 library(sp)
+library(sf)
 library(tmap)
 ```
 
@@ -59,14 +60,21 @@ cities_lat <- cbind(geocode(as.character(Population_to_unknown_lines$name)),Popu
 Error: Object cities_lat is neither from class sf, stars, Spatial, Raster, nor SpatRaster.
 
 ```{r}
-
-
 # Convert cities_lat to an sf spatial object
 cities_sf <- st_as_sf(na.omit(cities_lat), coords = c("lon", "lat"))
 
+#making a porportion column
+
+# Create the proportion column with default value of 0.01
+cities_sf$proportion <-  cities_sf$Total_unknown / cities_sf$Total_service
+
+
+cities_sf$proportion <- as.numeric(cities_sf$proportion)
+
 # Create a tmap object
 map <- tm_shape(cities_sf) +
-  tm_symbols(col = "purple", size = 0.01)
+  tm_symbols(col = "proportion", size = "proportion", palette = "RdYlBu") + 
+  tm_layout(bg.color = "black")
 
 # Set the map's extent to focus on Michigan
 map <- map +
@@ -74,6 +82,7 @@ map <- map +
 
 # Display the map
 tmap_mode("view")
+tmap_style("albatross")
 map
 
 ```
