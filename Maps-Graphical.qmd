@@ -70,10 +70,15 @@ cities_sf$proportion <-  cities_sf$Total_unknown / cities_sf$Total_service
 
 
 cities_sf$proportion <- as.numeric(cities_sf$proportion)
+# Assuming you have a data frame named 'cities_sf' with the 'proportion' column
+
+cities_sf$percentage <- cities_sf$proportion * 100
+
+
 
 # Create a tmap object
 map <- tm_shape(cities_sf) +
-  tm_symbols(col = "proportion", size = "proportion", palette = "RdYlBu") + 
+  tm_symbols(col = "percentage", size = "population", palette = "RdYlBu") + 
   tm_layout(bg.color = "white")
 
 # Set the map's extent to focus on Michigan
@@ -84,5 +89,29 @@ map <- map +
 tmap_mode("view")
 tmap_style("albatross")
 map
+
+```
+
+## Alter map to display on proportions above 0.00
+
+```{r}
+
+filtered_cities_sf <- cities_sf %>%
+  filter(proportion != 0)
+
+# Create a tmap object
+map_nonzero <- tm_shape(filtered_cities_sf) +
+  tm_symbols(col = "percentage", size = "population", palette = "RdYlBu") + 
+  tm_layout(bg.color = "white")
+
+# Set the map's extent to focus on Michigan
+map <- map +
+  tm_view(bbox = c(-90, 41, -80, 49))
+
+# Display the map
+tmap_mode("view")
+tmap_style("albatross")
+map_nonzero
+
 
 ```
