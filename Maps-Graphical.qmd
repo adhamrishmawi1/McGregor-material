@@ -28,7 +28,7 @@ map_data <- map_data("state", region= "michigan")
 
 ## Config Data sets to compatibility state
 
-```{r}
+```{r, warning=FALSE,message=FALSE}
 #google's API key
 ggmap::register_google(key = "AIzaSyB_bVP1ljY7VcsQDSEnJXW4AHWwBqMKmZU")
 
@@ -57,9 +57,7 @@ cities_lat <- cbind(geocode(as.character(Population_to_unknown_lines$name)),Popu
 
 ## Map using package Tmap
 
-Error: Object cities_lat is neither from class sf, stars, Spatial, Raster, nor SpatRaster.
-
-```{r}
+```{r, warning=FALSE,message=FALSE}
 # Convert cities_lat to an sf spatial object
 cities_sf <- st_as_sf(na.omit(cities_lat), coords = c("lon", "lat"))
 
@@ -92,9 +90,9 @@ map
 
 ```
 
-## Alter map to display on proportions above 0.00
+## Alter map to display  proportions above 0.00
 
-```{r}
+```{r,  warning=FALSE,message=FALSE}
 
 filtered_cities_sf <- cities_sf %>%
   filter(proportion != 0)
