@@ -30,11 +30,16 @@ map_data <- map_data("state", region= "michigan")
 
 ```{r, warning=FALSE,message=FALSE}
 #google's API key
-ggmap::register_google(key = "AIzaSyB_bVP1ljY7VcsQDSEnJXW4AHWwBqMKmZU")
+#ggmap::register_google(key = "AIzaSyB_bVP1ljY7VcsQDSEnJXW4AHWwBqMKmZU")
 
 
 #altering data to add long and lat for cities
-cities_lat <- cbind(geocode(as.character(Population_to_unknown_lines$name)),Population_to_unknown_lines)
+## cities_lat <- cbind(geocode(as.character(Population_to_unknown_lines$name)),Population_to_unknown_lines)
+# Assuming your dataset is stored in a variable called "mydata"
+## write.csv(cities_lat, file = "C:\\Users\\nader\\OneDrive\\Documents\\Mcgregor Project\\Data material\\CSV-extracts from sql\\cities_lat.csv", row.names = TRUE)
+
+cities_lat <- read.csv("~/Mcgregor Project/Data material/CSV-extracts from sql/cities_lat.csv")
+
 ```
 
 ## Plotting Michigan-failed
@@ -59,7 +64,9 @@ cities_lat <- cbind(geocode(as.character(Population_to_unknown_lines$name)),Popu
 
 ```{r, warning=FALSE,message=FALSE}
 # Convert cities_lat to an sf spatial object
-cities_sf <- st_as_sf(na.omit(cities_lat), coords = c("lon", "lat"))
+cities_sf <- st_as_sf(na.omit(cities_lat), coords = c("lon", "lat")) |>
+  subset(select = -X)
+
 
 #making a porportion column
 
@@ -90,7 +97,7 @@ map
 
 ```
 
-## Alter map to display  proportions above 0.00
+## Alter map to display proportions above 0.00
 
 ```{r,  warning=FALSE,message=FALSE}
 
