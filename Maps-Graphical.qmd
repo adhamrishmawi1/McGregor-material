@@ -83,7 +83,7 @@ cities_sf$percentage <- cities_sf$proportion * 100
 
 # Create a tmap object
 map <- tm_shape(cities_sf) +
-  tm_symbols(col = "percentage", size = "population", palette = "RdYlBu") + 
+  tm_symbols(col = "percentage", size = 0.03, palette = "RdYlBu") + 
   tm_layout(bg.color = "white")
 
 # Set the map's extent to focus on Michigan
@@ -106,17 +106,20 @@ filtered_cities_sf <- cities_sf %>%
 
 # Create a tmap object
 map_nonzero <- tm_shape(filtered_cities_sf) +
-  tm_symbols(col = "percentage", size = "population", palette = "RdYlBu") + 
-  tm_layout(bg.color = "white")
-
-# Set the map's extent to focus on Michigan
-map <- map +
-  tm_view(bbox = c(-90, 41, -80, 49))
+  tm_layout(bg.color = "white") +
+  tm_bubbles("population",col = "percentage",size = 0.03 )
 
 # Display the map
 tmap_mode("view")
 tmap_style("albatross")
-map_nonzero
+map_nonzero +
+tm_view(bbox = c(-90, 41, -80, 49))
 
+```
+
+## Make a map that displays unknown/total with heat map layout
+
+```{r}
+#FIGURE OUT HOW TO MAKE SPATIAL POINTS INTO POLYGONS
 
 ```
