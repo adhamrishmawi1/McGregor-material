@@ -5,23 +5,12 @@ format: html
 editor: visual
 ---
 
-## Quarto
+## Percentage graphs
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+The intent of the upcoming graphs is to make a very common graph to demonstrate the percentage per year column and how current cities would or wont finish by designated time frame.
 
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Packages and dataset
 
 ```{r}
-1 + 1
+
 ```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
