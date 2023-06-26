@@ -9,8 +9,26 @@ editor: visual
 
 The intent of the upcoming graphs is to make a very common graph to demonstrate the percentage per year column and how current cities would or wont finish by designated time frame.
 
-## Packages and dataset
+## Packages and data set
 
 ```{r}
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(readr)
+```
+
+```{r}
+data <- read.csv("~\\Mcgregor Project\\Data material\\CSV-extracts from sql\\Percent_per_year_lines.csv", header = FALSE)
+Pecent_data_cleaned <- rename(data, name_city = V1, funding_per_year = V2, cost_avg_job_priv = V3, cost_avg_job_pub = V4, cost_avg_job_full = V5, percent_per_years = V6)
+```
+
+## make initial bar graph
+
+```{r}
+ggplot(perce, aes(x = name_city, y = percent_per_years, fill = funding_per_year)) +
+  geom_bar(stat = "identity") +
+  labs(x = "City", y = "Percentage", title = "Percentage by City in Year") +
+  theme_minimal()
 
 ```
