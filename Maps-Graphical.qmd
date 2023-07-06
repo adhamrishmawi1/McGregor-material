@@ -92,7 +92,7 @@ map <- map +
 
 # Display the map
 tmap_mode("view")
-tmap_style("albatross")
+#("albatross")
 map
 
 ```
@@ -111,7 +111,7 @@ map_nonzero <- tm_shape(filtered_cities_sf) +
 
 # Display the map
 tmap_mode("view")
-tmap_style("albatross")
+#tmap_style("albatross")
 map_nonzero +
 tm_view(bbox = c(-90, 41, -80, 49))
 
@@ -123,3 +123,41 @@ tm_view(bbox = c(-90, 41, -80, 49))
 #FIGURE OUT HOW TO MAKE SPATIAL POINTS INTO POLYGONS
 
 ```
+
+## alternative graph for top of page 4
+
+```{r}
+library(tmap)
+library(sf)
+
+# Convert cities_lat to an sf spatial object
+cities_sf <- st_as_sf(na.omit(cities_lat), coords = c("lon", "lat")) |>
+  subset(select = -X)
+
+# Create the proportion column with default value of 0.01
+cities_sf$proportion <- cities_sf$Total_unknown / cities_sf$Total_service
+cities_sf$proportion <- as.numeric(cities_sf$proportion)
+
+# Assuming you have a data frame named 'cities_sf' with the 'proportion' column
+cities_sf$percentage <- cities_sf$proportion * 100
+
+# Create a tmap object
+map <- tm_shape(cities_sf) +
+  tm_symbols(col = "population", size = "population", palette =  c("purple", "gold", "red","green"),breaks =  c(0, 1655, 4121, 10412, 700000))
+
+# Set the map's extent to focus on Michigan
+map <- map +
+  tm_view(bbox = c(-90, 41, -80, 49))
+
+# Customize the tmap theme to change the background color
+map <- map +
+  tm_layout(bg.color = "white")
+
+# Display the map
+tmap_mode("view")
+map
+
+tmap_save(map, "World_map.html")
+```
+
+The code snippet utilizes the tmap and sf libraries in R to create a map visualization of cities in Michigan. The map displays symbolized points representing different cities, where the size and color of the symbols correspond to the population data. The symbols are colored using a custom palette based on population ranges, with larger and differently colored symbols indicating areas with higher population densities. The map focuses on Michigan by setting the bounding box coordinates, and it has a white background. The resulting visualization provides an overview of the population distribution across cities in Michigan, highlighting urban areas with larger symbols colored in red and green.
