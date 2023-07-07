@@ -111,7 +111,7 @@ map_nonzero <- tm_shape(filtered_cities_sf) +
 
 # Display the map
 tmap_mode("view")
-#tmap_style("albatross")
+tmap_style("albatross")
 map_nonzero +
 tm_view(bbox = c(-90, 41, -80, 49))
 

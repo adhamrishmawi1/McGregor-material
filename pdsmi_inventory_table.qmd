@@ -1,0 +1,65 @@
+---
+title: "pdsmi_expose"
+author: "Adham Rishmawi"
+format: html
+editor: visual
+---
+
+## libraries + loading in data
+
+```{r}
+library(readxl)
+
+data <- read_excel("C:\\Users\\nader\\OneDrive\\Documents\\Mcgregor Project\\EGLE docs\\pdsmi-summary.xlsx")
+```
+
+## making table
+
+\# Count the number of '0' observations in each column
+
+count_column1 \<- sum(data\$\`Unknown - No Information\` != 0)
+
+count_column2 \<- table(data\$\`Known Lead\`)\["0"\]
+
+count_column3 \<- table(data\$\`No Lead or GPCL\`)\["0"\]
+
+\# Create a table with the results
+
+result_table \<- data.frame(Column = c("Number of cities with 1 or more unknowns", "Number of cities with 1 or more lead lines", "Number of cities that have zero lead or galvanized lines"),
+
+Count = c(count_column1, count_column2, count_column3))
+
+\# Print the table
+
+print(result_table)
+
+```{r}
+
+library(knitr)
+library(kableExtra)
+library(tinytex)
+
+# Count the number of '0' observations in each column
+count_column1 <- sum(data$`Unknown - No Information` != 0)
+count_column2 <- table(data$`Known Lead`)["0"]
+count_column3 <- table(data$`No Lead or GPCL`)["0"]
+
+# Create a table with the results
+result_table <- data.frame(Column = c("Number of cities with 1 or more unknowns", "Number of cities with 1 or more lead lines", "Number of cities that have zero lead or galvanized lines"),
+                           Count = c(count_column1, count_column2, count_column3))
+
+# Print the table
+print(result_table)
+
+# Save the table as a PDF
+#tinytex::install_tinytex()  # Install TinyTeX if not already installed
+kable(result_table, format = "latex", booktabs = TRUE) %>%
+  kable_styling(latex_options = "striped", full_width = FALSE) %>%
+  save_kable(file = "result_table.pdf")
+
+
+
+
+
+
+```
