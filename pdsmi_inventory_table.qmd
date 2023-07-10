@@ -10,6 +10,7 @@ editor: visual
 ```{r}
 library(readxl)
 
+
 data <- read_excel("C:\\Users\\nader\\OneDrive\\Documents\\Mcgregor Project\\EGLE docs\\pdsmi-summary.xlsx")
 ```
 
@@ -61,5 +62,94 @@ kable(result_table, format = "latex", booktabs = TRUE) %>%
 
 
 
+```
 
+```{r}
+data$human <- data$`Total Service Lines`|>
+  as.numeric()
+library(knitr)
+library(kableExtra)
+
+# Calculate the counts
+unknown_per30 <- sum(data$`Unknown - No Information` / data$human > 0.30, na.rm = TRUE)
+unknown_per40 <- sum(data$`Unknown - No Information` / data$human > 0.40, na.rm = TRUE)
+unknown_per50 <- sum(data$`Unknown - No Information` / data$human > 0.50, na.rm = TRUE)
+
+# Create a table
+count_table <- data.frame(Unknown_Percentage = c("30%+", "40%+", "50%+"),
+                          Count = c(unknown_per30, unknown_per40, unknown_per50))
+
+# Format the table
+count_table
+
+
+```
+
+```{r}
+# Create a new column with the city names based on the unknown category
+data$Unknown_Category <- ifelse(data$`Unknown - No Information` / data$human > 0.50, "Unknown > 50%",
+                                ifelse(data$`Unknown - No Information` / data$human > 0.40, "Unknown > 40%",
+                                       ifelse(data$`Unknown - No Information` / data$human > 0.30, "Unknown > 30%",
+                                              "Unknown <= 30%")))
+
+
+```
+
+```{r}
+
+
+# Filter the data for cities with the category "Unknown > 50%"
+cities_50plus_unknown <- data$`fMuir Village of`[data$Unknown_Category == "Unknown > 50%"]|>
+  na.omit()
+
+# Filter the data for cities with the category "Unknown > 40%"
+cities_40plus_unknown <- data$`fMuir Village of`[data$Unknown_Category == "Unknown > 40%"]|>
+  na.omit()
+
+# Filter the data for cities with the category "Unknown > 30%"
+cities_30plus_unknown <- data$`fMuir Village of`[data$Unknown_Category == "Unknown > 30%"]|>
+  na.omit()
+
+# Filter the data for cities with the category "Unknown > 50%"
+cities_30minus_unknown <- data$`fMuir Village of`[data$Unknown_Category == "Unknown <= 30%"]|>
+  na.omit()
+
+
+
+
+```
+
+```{r}
+# File path
+file_path <- "C:\\Users\\nader\\OneDrive\\Documents\\Mcgregor Project\\Data material\\txt-csv-from-R\\data-50per.txt"
+
+# Writing values to a text file
+write.table(cities_50plus_unknown, file = file_path, sep = "\t", row.names = FALSE, col.names = FALSE)
+
+# File path
+file_path <- "C:\\Users\\nader\\OneDrive\\Documents\\Mcgregor Project\\Data material\\txt-csv-from-R\\data-40per.txt"
+
+# Writing values to a text file
+write.table(cities_40plus_unknown, file = file_path, sep = "\t", row.names = FALSE, col.names = FALSE)
+
+# File path
+file_path <- "C:\\Users\\nader\\OneDrive\\Documents\\Mcgregor Project\\Data material\\txt-csv-from-R\\data-30per.txt"
+
+# Writing values to a text file
+write.table(cities_30plus_unknown, file = file_path, sep = "\t", row.names = FALSE, col.names = FALSE)
+# File path
+
+file_path <- "C:\\Users\\nader\\OneDrive\\Documents\\Mcgregor Project\\Data material\\txt-csv-from-R\\data-30minusper.txt"
+
+# Writing values to a text file
+write.table(cities_30minus_unknown, file = file_path, sep = "\t", row.names = FALSE, col.names = FALSE)
+
+
+```
+
+## extracting data set to use in maps qmd
+
+```{r}
+
+write.csv(data, file = "C:\\Users\\nader\\OneDrive\\Documents\\Mcgregor Project\\Data material\\txt-csv-from-R\\pdsmi-unknown.csv", row.names = TRUE)
 ```
